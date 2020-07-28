@@ -1,15 +1,13 @@
-package com.example.guessword.title
+package com.example.guessword.score
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.example.guessword.R
-import com.example.guessword.databinding.FragmentTitleBinding
 
-class TitleFragment : Fragment() {
+class ScoreFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +19,7 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding:FragmentTitleBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_title, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_score, container, false)
     }
 
 
