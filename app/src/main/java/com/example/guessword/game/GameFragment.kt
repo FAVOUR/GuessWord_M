@@ -1,11 +1,14 @@
 package com.example.guessword.game
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.guessword.R
 import com.example.guessword.databinding.FragmentGameBinding
 
@@ -22,6 +25,7 @@ class GameFragment : Fragment() {
     private lateinit var wordList: MutableList<String>
 
     private lateinit var binding: FragmentGameBinding
+    private lateinit var viewmodel: GameViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +34,8 @@ class GameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game, container, false)
 
+        Log.i("GameFragment", "Called ViewModelProviders.of")
+        viewmodel = ViewModelProviders.of(this)[GameViewModel::class.java]
         resetList()
         nextWord()
 
