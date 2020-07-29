@@ -13,7 +13,7 @@
         tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_gameFragment"
-            app:destination="@id/gameFragment"
+            app:destination="@id/game_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
@@ -21,23 +21,38 @@
             />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
+        android:id="@+id/game_destination"
         android:name="com.example.guessword.game.GameFragment"
         android:label="GameFragment" >
         <action
             android:id="@+id/action_gameFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment"
+            app:destination="@id/score_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
-        android:id="@+id/scoreFragment"
+        android:id="@+id/score_destination"
         android:name="com.example.guessword.score.ScoreFragment"
         android:label="ScoreFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_right"
         app:popExitAnim="@anim/slide_out_left"/>
+
+    <action
+        android:id="@+id/navigate_to_homeScreen"
+        app:destination="@id/game_destination"
+        app:popExitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:enterAnim="@anim/slide_in_right"
+        />
+
+    <argument
+        android:name="score"
+        android:defaultValue="0"
+        app:argType="integer"/>
+
 </navigation>
