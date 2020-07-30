@@ -39,6 +39,10 @@ class GameFragment : Fragment() {
         viewModel.lWord.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
         })
+
+        viewModel.lGameFinished.observe(viewLifecycleOwner, Observer { isGameFinished ->
+           if (isGameFinished) gameFinished()
+        })
 //            object :Observer<Int>{
 //            override fun onChanged(t: Int?) {
 //                TODO("Not yet implemented")
@@ -93,6 +97,7 @@ class GameFragment : Fragment() {
         val action = GameFragmentDirections.actionGameFragmentToScoreFragment()
         action.score = viewModel.lScore.value ?: 0
         NavHostFragment.findNavController(this).navigate(action)
+          viewModel.gameFinishedComplete()
     }
 
 
