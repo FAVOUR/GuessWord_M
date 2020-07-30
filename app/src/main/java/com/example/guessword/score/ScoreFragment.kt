@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.guessword.R
 import com.example.guessword.databinding.FragmentScoreBinding
@@ -23,7 +24,9 @@ class ScoreFragment : Fragment() {
          val scoreViewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
          scoreViewModel = ViewModelProviders.of(this,scoreViewModelFactory)[ScoreViewModel::class.java]
 
-        binding.scoreText.text = scoreViewModel.score.toString()
+         scoreViewModel.lFinalScore.observe(viewLifecycleOwner, Observer{
+             binding.scoreText.text =it.toString()
+         })
 
         return binding.root
     }
