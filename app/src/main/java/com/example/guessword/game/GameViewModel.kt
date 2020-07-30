@@ -1,16 +1,21 @@
 package com.example.guessword.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel :ViewModel() {
 
     // The current word
-     var word  = MutableLiveData<String>()
+     private var word  = MutableLiveData<String>()
+     val lWord : LiveData<String>
+     get() = word
 
     // The current score
-     var score = MutableLiveData<Int>()
+    private  var score = MutableLiveData<Int>()
+     val lScore : LiveData<Int>
+     get() = score
 
 
     // The list of words - the front of the list is the next word to guess

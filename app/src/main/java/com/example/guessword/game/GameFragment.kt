@@ -31,12 +31,12 @@ class GameFragment : Fragment() {
         Log.i("GameFragment", "Called ViewModelProviders.of")
         viewModel = ViewModelProviders.of(this)[GameViewModel::class.java]
 
-        viewModel.score.observe(viewLifecycleOwner, Observer {newScore ->
+        viewModel.lScore.observe(viewLifecycleOwner, Observer {newScore ->
             binding.scoreText.text = newScore.toString()
 
         })
         /** Setting up LiveData observation relationship **/
-        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
+        viewModel.lWord.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
         })
 //            object :Observer<Int>{
@@ -91,7 +91,7 @@ class GameFragment : Fragment() {
     private fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
         val action = GameFragmentDirections.actionGameFragmentToScoreFragment()
-        action.score = viewModel.score.value ?: 0
+        action.score = viewModel.lScore.value ?: 0
         NavHostFragment.findNavController(this).navigate(action)
     }
 
