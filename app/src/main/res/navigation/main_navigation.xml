@@ -30,16 +30,13 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/titleFragment"/>
     </fragment>
     <fragment
         android:id="@+id/score_destination"
         android:name="com.example.guessword.score.ScoreFragment"
-        android:label="ScoreFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_right"
-        app:popExitAnim="@anim/slide_out_left"/>
+        android:label="ScoreFragment" >
 
     <action
         android:id="@+id/navigate_to_homeScreen"
@@ -48,11 +45,12 @@
         app:popEnterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:enterAnim="@anim/slide_in_right"
+        app:popUpTo="@id/titleFragment"
         />
 
     <argument
         android:name="score"
         android:defaultValue="0"
         app:argType="integer"/>
-
+    </fragment>
 </navigation>
