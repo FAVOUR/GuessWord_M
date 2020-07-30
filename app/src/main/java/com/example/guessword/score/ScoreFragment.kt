@@ -5,21 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import com.example.guessword.R
+import com.example.guessword.databinding.FragmentScoreBinding
 
 class ScoreFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    lateinit var  scoreViewModel: ScoreViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score, container, false)
+        var binding =  FragmentScoreBinding.inflate(inflater, container, false)
+
+         val scoreViewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
+         scoreViewModel = ViewModelProviders.of(this,scoreViewModelFactory)[ScoreViewModel::class.java]
+
+        binding.scoreText.text = scoreViewModel.score.toString()
+
+        return binding.root
     }
 
 
