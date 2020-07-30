@@ -45,7 +45,7 @@ class GameViewModel :ViewModel() {
 
      fun onSkip() {
         if (!wordList.isEmpty()) {
-            score.value?.minus(1)
+            score.value= (score.value)?.minus(1)
         }
         nextWord()
     }
@@ -53,9 +53,11 @@ class GameViewModel :ViewModel() {
 
      fun onCorrect() {
         if (!wordList.isEmpty()) {
-            score.value?.plus(1)
+           score.value= (score.value)?.plus(1)
         }
-        nextWord()
+
+
+         nextWord()
     }
 
     fun gameFinished(){
