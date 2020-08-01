@@ -28,8 +28,12 @@ class GameFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game, container, false)
 
+
+
         Log.i("GameFragment", "Called ViewModelProviders.of")
         viewModel = ViewModelProviders.of(this)[GameViewModel::class.java]
+
+        binding.gameViewModel =viewModel
 
         viewModel.lScore.observe(viewLifecycleOwner, Observer {newScore ->
 
