@@ -31,14 +31,15 @@ class ScoreFragment : Fragment() {
          })
 
         binding.scoreViewModel=scoreViewModel
+        binding.lifecycleOwner=viewLifecycleOwner
 
         // Navigates back to game when button is pressed
-        scoreViewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
-            if (playAgain) {
-                findNavController().navigate(ScoreFragmentDirections.navigateToHomeScreen())
-                scoreViewModel.onPlayAgainComplete()
-            }
-        })
+//        scoreViewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
+//            if (playAgain) {
+//                findNavController().navigate(ScoreFragmentDirections.navigateToHomeScreen())
+//                scoreViewModel.onPlayAgainComplete()
+//            }
+//        })
 
 //        binding.playAgainButton.setOnClickListener {  scoreViewModel.onPlayAgain()  }
 
