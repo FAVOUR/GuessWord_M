@@ -95,7 +95,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Score: 2" />
+            tools:text="@{@string/format_number(gameViewModel.lScore)}" />
 
         <Button
             android:id="@+id/skip_button"
@@ -139,7 +139,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/end_game"
             android:theme="@style/SkipButton"
-            android:onClick="@{() -> gameViewModel.gameFinished()}"
+            android:onClick="@{() -> gameViewModel.onGameFinished()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline"

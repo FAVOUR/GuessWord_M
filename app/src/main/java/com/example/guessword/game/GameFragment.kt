@@ -46,9 +46,9 @@ class GameFragment : Fragment() {
 //            binding.wordText.text = newWord
 //        })
 
-//        viewModel.lGameFinished.observe(viewLifecycleOwner, Observer { isGameFinished ->
-//           if (isGameFinished) gameFinished()
-//        })
+        viewModel.lGameFinished.observe(viewLifecycleOwner, Observer { isGameFinished ->
+           if (isGameFinished) gameFinished()
+        })
 ////            object :Observer<Int>{
 //            override fun onChanged(t: Int?) {
 //                TODO("Not yet implemented")

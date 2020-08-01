@@ -60,7 +60,7 @@ class GameViewModel :ViewModel() {
          nextWord()
     }
 
-    fun gameFinished(){
+    fun onGameFinished(){
         gameFinished.value=true
     }
 
@@ -115,7 +115,7 @@ class GameViewModel :ViewModel() {
      */
      fun nextWord() {
         if (wordList.isEmpty()) {
-            gameFinished()
+            onGameFinished()
         }else{
             word.value = wordList.removeAt(0)
         }
