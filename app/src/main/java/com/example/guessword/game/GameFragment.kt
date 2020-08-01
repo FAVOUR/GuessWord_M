@@ -34,21 +34,22 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this)[GameViewModel::class.java]
 
         binding.gameViewModel =viewModel
+        binding.lifecycleOwner =viewLifecycleOwner
 
-        viewModel.lScore.observe(viewLifecycleOwner, Observer {newScore ->
-
-            binding.scoreText.text = newScore.toString()
-
-        })
+//        viewModel.lScore.observe(viewLifecycleOwner, Observer {newScore ->
+//
+//            binding.scoreText.text = newScore.toString()
+//
+//        })
         /** Setting up LiveData observation relationship **/
-        viewModel.lWord.observe(viewLifecycleOwner, Observer { newWord ->
-            binding.wordText.text = newWord
-        })
+//        viewModel.lWord.observe(viewLifecycleOwner, Observer { newWord ->
+//            binding.wordText.text = newWord
+//        })
 
-        viewModel.lGameFinished.observe(viewLifecycleOwner, Observer { isGameFinished ->
-           if (isGameFinished) gameFinished()
-        })
-//            object :Observer<Int>{
+//        viewModel.lGameFinished.observe(viewLifecycleOwner, Observer { isGameFinished ->
+//           if (isGameFinished) gameFinished()
+//        })
+////            object :Observer<Int>{
 //            override fun onChanged(t: Int?) {
 //                TODO("Not yet implemented")
 //            }
