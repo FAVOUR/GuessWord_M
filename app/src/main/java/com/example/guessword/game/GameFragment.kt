@@ -55,10 +55,10 @@ class GameFragment : Fragment() {
 //        }
 
 
-        binding.correctButton.setOnClickListener { onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
-
-        binding.endGameButton.setOnClickListener { onEndGame() }
+//        binding.correctButton.setOnClickListener { onCorrect() }
+//        binding.skipButton.setOnClickListener { onSkip() }
+//
+//        binding.endGameButton.setOnClickListener { onEndGame() }
 
 //        updateScoreText()
 //        updateWordText()
