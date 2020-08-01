@@ -70,6 +70,7 @@ class GameFragment : Fragment() {
 
     /** Methods for buttons presses **/
 
+/*
     private fun onSkip() {
         viewModel.onSkip()
 //        updateWordText()
@@ -82,6 +83,7 @@ class GameFragment : Fragment() {
 
 
     }
+*/
 
 
     /** Methods for updating the UI **/
