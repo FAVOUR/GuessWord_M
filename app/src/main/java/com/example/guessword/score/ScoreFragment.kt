@@ -26,20 +26,20 @@ class ScoreFragment : Fragment() {
          val scoreViewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
          scoreViewModel = ViewModelProviders.of(this,scoreViewModelFactory)[ScoreViewModel::class.java]
 
-         scoreViewModel.lFinalScore.observe(viewLifecycleOwner, Observer{
-             binding.scoreText.text =it.toString()
-         })
+//         scoreViewModel.lFinalScore.observe(viewLifecycleOwner, Observer{
+//             binding.scoreText.text =it.toString()
+//         })
 
         binding.scoreViewModel=scoreViewModel
         binding.lifecycleOwner=viewLifecycleOwner
 
         // Navigates back to game when button is pressed
-//        scoreViewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
-//            if (playAgain) {
-//                findNavController().navigate(ScoreFragmentDirections.navigateToHomeScreen())
-//                scoreViewModel.onPlayAgainComplete()
-//            }
-//        })
+        scoreViewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections.navigateToHomeScreen())
+                scoreViewModel.onPlayAgainComplete()
+            }
+        })
 
 //        binding.playAgainButton.setOnClickListener {  scoreViewModel.onPlayAgain()  }
 

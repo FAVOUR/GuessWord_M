@@ -1,9 +1,13 @@
 package com.example.guessword.game
 
+import android.os.CountDownTimer
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import kotlin.properties.Delegates
 
 class GameViewModel :ViewModel() {
 
@@ -22,6 +26,31 @@ class GameViewModel :ViewModel() {
      get() = gameFinished
 
 
+    private  var currentTime = MutableLiveData<Long>()
+    val lCurrentTime : LiveData<Long>
+        get() = currentTime
+
+
+    companion object {
+
+        // Time when the game is over
+        private const val DONE = 0L
+
+        // Countdown time interval
+        private const val ONE_SECOND = 1000L
+
+        // Total time for the game
+        private const val COUNTDOWN_TIME = 60000L
+
+    }
+
+
+   private val timer :  CountDownTimer
+
+
+
+
+
     // The list of words - the front of the list is the next word to guess
      lateinit var wordList: MutableList<String>
 
@@ -37,19 +66,20 @@ class GameViewModel :ViewModel() {
         score.value= 0
         resetList()
         nextWord()
-    }
 
-    companion object {
+        timer= object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND){
+            override fun onFinish() {
+                currentTime.value = DONE
+                onGameFinished()
+            }
 
-        // Time when the game is over
-        private const val DONE = 0L
+            override fun onTick(millisUntilFinished: Long) {
+                currentTime.value = millisUntilFinished /   ONE_SECOND
 
-        // Countdown time interval
-        private const val ONE_SECOND = 1000L
+            }
+        }
 
-        // Total time for the game
-        private const val COUNTDOWN_TIME = 60000L
-
+        timer.start()
     }
 
 
@@ -85,6 +115,7 @@ class GameViewModel :ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+        timer.cancel()
         Log.i("GameViewModel", "GameViewModel destroyed!")
     }
 
@@ -121,14 +152,16 @@ class GameViewModel :ViewModel() {
 
 
 
-
+   val currentTimeString= Transformations.map(currentTime) { time ->
+       DateUtils.formatElapsedTime(time)
+   }
 
     /**
      * Moves to the next word in the list
      */
      fun nextWord() {
         if (wordList.isEmpty()) {
-            onGameFinished()
+            resetList()
         }else{
             word.value = wordList.removeAt(0)
         }
